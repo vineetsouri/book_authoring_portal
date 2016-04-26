@@ -8,7 +8,7 @@
   <% @book.chapters.each do |chapter| %>
   <tr>
     <td>
-      <%= chapter.title %>
+      <%= link_to chapter.title, book_chapter_path(@book,@chapter) %>
     </td>
   </tr>
   <% end %>
