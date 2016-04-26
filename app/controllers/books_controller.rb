@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
 
-  before_action :set_book, only: [:show, :edit]
+  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :book_params, only: [:update]
 
   def index
     @all_books = Book.all
@@ -39,15 +40,23 @@ class BooksController < ApplicationController
     end
   end
 
+  def destroy
+    @book.destroy
+    respond_to do |format|
+      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
 
 
 
 private
-    def set_book
-      @book = Book.find(params[:id])
-    end
+  def set_book
+    @book = Book.find(params[:id])
+  end
 
-    def book_params
-      params.require(:book).permit(:title, :caption)
-    end
+  def book_params
+    params.require(:book).permit(:title, :caption)
+  end
 end
