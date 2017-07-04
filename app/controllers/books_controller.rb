@@ -36,10 +36,6 @@ before_action :fetch_book, only: [:show, :destroy, :edit, :update, :preview]
     redirect_to root_path, notice: "Book deleted successfully"
   end
 
-  def preview
-    @chapters = @book.chapters.includes(:sections)
-  end
-
 private
   def book_params
     params.require(:book).permit(:title, :caption)

@@ -19,6 +19,7 @@ gem 'simple_form'
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
+  gem 'meta_request'
 end
 
 group :development do
